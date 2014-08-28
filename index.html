@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Composer - Dependency Management for PHP</title>
+
+		<meta name="author" content="John Kelly">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h1><img src="images/composer.png" /></h1>
+					<h3>Dependency Management for PHP</h3>
+					<p>
+						<small>Presented by <a href="#">John Kelly</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>John Kelly</h2>
+                    <ul>
+                        <li>Software Engineering Lead at ADP Dealer Services</li>
+                        <li>Zend Certified Engineer - PHP 5.3</li>
+                        <li>Software engineering for 11 years</li>
+                    </ul>
+
+                    <p><img src="images/adp.gif" width="300" style="padding: 15px;" /></p>
+                    <p class="fragment">
+                        There are positions.  Ask me afterwards for details.<br />
+                        <a href="http://jobs.adp.com/" target="_blank">jobs.adp.com</a>
+                    </p>
+                </section>
+
+				<section>
+					<h2>What is Composer?</h2>
+
+					<ul>
+                        <li>Dependency manager for PHP</li>
+                        <li>Manages per-project dependencies</li>
+					</ul>
+
+					<!--<aside class="notes">-->
+						<!--Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).-->
+					<!--</aside>-->
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>What's wrong with PEAR?</h2>
+
+                        <ul>
+                            <li>Manages system-wide dependencies</li>
+                            <li>Application doesn't manage dependencies</li>
+                        </ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Using Composer - Basics</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": "~1.1"
+    }
+}
+                    </code></pre>
+
+                    <pre class="fragment"><code>$ composer install</code></pre>
+				</section>
+
+				<section>
+					<h2><img src="images/packagist.png" style="background-color: #ffffff;" /></h2>
+				</section>
+
+				<section>
+					<section>
+                        <h2>Semantic Versioning</h2>
+                        <p><a href="http://semver.org/">http://semver.org/</a></p>
+                        <p><img src="images/versioning.gif" /></p>
+					</section>
+
+                    <section>
+                        <h3>Definitions</h3>
+                        <dl>
+                            <div class="fragment">
+                                <dd>MAJOR</dd>
+                                <dt>When you make incompatible API changes</dt>
+                            </div>
+                            <div class="fragment">
+                                <dd>MINOR</dd>
+                                <dt>When you add functionality in a backwards-compatible manner</dt>
+                            </div>
+                            <div class="fragment">
+                                <dd>PATCH</dd>
+                                <dt>When you make backwards compatible bug fixes</dt>
+                            </div>
+                        </dl>
+                    </section>
+				</section>
+
+				<section>
+					<section>
+                        <h2>Version Syntax</h2>
+                        <div class="fragment">
+                            <h3>Exact version</h3>
+                            <p><strong>1.0.2</strong></p>
+                            <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": "1.0.2"
+    }
+}
+                            </code></pre>
+                        </div>
+					</section>
+
+                    <section>
+                        <h3>Range</h3>
+                        <ul>
+                            <li>>=1.0</li>
+                            <li>>=1.0,<2.0</li>
+                            <li>>=1.0,<1.1 | >=1.2</li>
+                        </ul>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": ">=1.0,<1.1 | >=1.2"
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Wildcard</h3>
+                        <ul>
+                            <li>1.0.*</li>
+                            <li>1.*</li>
+                        </ul>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": "1.0.*"
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Tilde Operator</h3>
+                        <p></p>
+                        <ul>
+                            <li>~1.2</li>
+                            <li>~1.2.1</li>
+                        </ul>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": "~1.2"
+    }
+}
+                        </code></pre>
+                    </section>
+				</section>
+
+				<section>
+					<h2>Aliases</h2>
+
+                    <p>Used to alias a branch to a specific version.</p>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "require": {
+        "silex/silex": "dev-master as 1.2.9"
+    }
+}
+                    </code></pre>
+				</section>
+
+				<section>
+					<h2>Lock file</h2>
+                    <h3>composer.lock</h3>
+
+					<p>Contains the version specific information of your last install/update.</p>
+				</section>
+
+				<section>
+					<h2>Custom Installers</h2>
+
+                    <p>Allows for a package maintainer to customize the installation of their package.</p>
+				</section>
+
+                <section>
+                    <h2>Plugins</h2>
+
+                    <p>Gives the ability to alter or expand Composer's functionality.</p>
+
+                    <h3>Event Handling</h3>
+
+                    <ul>
+                        <li>COMMAND</li>
+                        <li>PRE_FILE_DOWNLOAD</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Scripts</h2>
+
+                        <p>Execute custom code or package-specific commands during the composer execution process.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li><strong>pre/post-install-cmd</strong>: occurs before the install command is executed.</li>
+                            <li><strong>pre/post-update-cmd</strong>: occurs before the update command is executed.</li>
+                            <li><strong>pre/post-status-cmd</strong>: occurs before the status command is executed.</li>
+                            <li><strong>pre/post-package-install</strong>: occurs before a package is installed.</li>
+                            <li><strong>pre/post-package-update</strong>: occurs before a package is updated.</li>
+                            <li><strong>pre/post-package-uninstall</strong>: occurs before a package has been uninstalled.</li>
+                            <li><strong>pre/post-autoload-dump</strong>: occurs before the autoloader is dumped, either during install/update, or via the dump-autoload command.</li>
+                            <li><strong>post-root-package-install</strong>: occurs after the root package has been installed, during the create-project command.</li>
+                            <li><strong>post-create-project-cmd</strong>: occurs after the create-project command is executed.</li>
+                            <li>...</li>
+                        </ul>
+                    </section>
+                </section>
+
+				<section>
+					<section>
+                        <h2>Private Packages</h2>
+                        <h3>with Satis</h3>
+
+                        <p>Host your own composer repository.</p>
+
+                        <p><a href="https://github.com/composer/satis">https://github.com/composer/satis</a></p>
+					</section>
+
+                    <section>
+                        <img src="images/satis.png" />
+                    </section>
+				</section>
+
+				<section>
+					<h2>Vendor binaries</h2>
+
+                    <p>Any command line script that a Composer package would like to pass along to a user who installs the package should be listed as a vendor binary.</p>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "bin": [
+        "bin/my-script",
+        "bin/my-other-script"
+    ]
+}
+                    </code></pre>
+				</section>
+
+				<section>
+					<h1>THANK YOU</h1>
+                    <h2>QUESTIONS?</h2>
+                    <p><img src="images/adp.gif" width="300" style="padding: 20px;" /></p>
+					<h3>BY John Kelly / john.m.kelly@adp.com</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
