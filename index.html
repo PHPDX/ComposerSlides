@@ -4,30 +4,29 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Composer - Dependency Management for PHP</title>
+		<title>reveal.js - The HTML Presentation Framework</title>
 
-		<meta name="author" content="John Kelly">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- For syntax highlighting -->
+		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<!-- Printing and PDF exports -->
 		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -42,346 +41,335 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-                    <h1><img src="images/composer.png" /></h1>
-					<h3>Dependency Management for PHP</h3>
+					<h1>Reveal.js</h1>
+					<h3>The HTML Presentation Framework</h3>
 					<p>
-						<small>Presented by <a href="#">John Kelly</a></small>
+						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
 					</p>
 				</section>
 
-                <section>
-                    <h2>John Kelly</h2>
-                    <ul>
-                        <li>Software Engineering Lead at ADP Dealer Services</li>
-                        <li>Zend Certified Engineer - PHP 5.3</li>
-                        <li>Software engineering for 11 years</li>
-                    </ul>
+				<section>
+					<h2>Hello There</h2>
+					<p>
+						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+					</p>
+				</section>
 
-                    <p><img src="images/adp.gif" width="300" style="padding: 15px;" /></p>
-                    <p class="fragment">
-                        There are positions.  Ask me afterwards for details.<br />
-                        <a href="http://jobs.adp.com/" target="_blank">jobs.adp.com</a>
-                    </p>
-                </section>
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>Slides can be nested inside of each other.</p>
+						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>That's it, time to go back up.</p>
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
 
 				<section>
-					<h2>What is Composer?</h2>
+					<h2>Slides</h2>
+					<p>
+						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
+					</p>
+				</section>
 
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
+				<section>
+					<h2>Touch Optimized</h2>
+					<p>
+						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+				<section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+				</section>
+
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
 					<ul>
-                        <li>Dependency manager for PHP</li>
-                        <li>Manages per-project dependencies</li>
-                        <li>Over 37,000 projects registered</li>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
 					</ul>
 				</section>
 
 				<section>
-                    <h2>What's wrong with PEAR?</h2>
-
-                    <ul>
-                        <li>Manages system-wide dependencies</li>
-                        <li>Application doesn't manage dependencies</li>
-                    </ul>
-
-                    <aside class="notes">
-                        Application doesn't manage dependencies, the readme does.
-                    </aside>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
 				</section>
 
 				<section>
-					<h2>Using Composer - Basics</h2>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "~1.1"
-    }
-}
-                    </code></pre>
-
-                    <pre class="fragment"><code>$ composer install</code></pre>
-
-                    <aside class="notes">
-                        Installing basics from existing package
-                        Creating new package
-                        composer init
-                        Segway into packagist and searching for packages
-                    </aside>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							<tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							<tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							<tr>
+						</tbody>
+					</table>
 				</section>
 
 				<section>
-					<h2><img src="images/packagist.png" style="background-color: #ffffff;" /></h2>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
 				</section>
 
 				<section>
-					<section>
-                        <h2>Semantic Versioning</h2>
-                        <p class="fragment"><a href="http://semver.org/">http://semver.org/</a></p>
-                        <p class="fragment"><img src="images/versioning.gif" /></p>
-
-                        <aside class="notes">
-                            <ul>
-                                <li>Who knows about semantic versioning?</li>
-                                <li>Semver.org</li>
-                            </ul>
-                        </aside>
-					</section>
-
-                    <section>
-                        <h3>Definitions</h3>
-                        <dl>
-                            <div class="fragment">
-                                <dd>MAJOR</dd>
-                                <dt>When you make incompatible API changes</dt>
-                            </div>
-                            <div class="fragment">
-                                <dd>MINOR</dd>
-                                <dt>When you add functionality in a backwards-compatible manner</dt>
-                            </div>
-                            <div class="fragment">
-                                <dd>PATCH</dd>
-                                <dt>When you make backwards compatible bug fixes</dt>
-                            </div>
-                        </dl>
-
-                        <aside class="notes">
-                            <ul>
-                                <li>client->post($data), client->send(RequestObject)</li>
-                            </ul>
-                        </aside>
-                    </section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
 				</section>
 
 				<section>
-					<section>
-                        <h2>Version Syntax</h2>
-                        <div class="fragment">
-                            <h3>Exact version</h3>
-                            <p><strong>1.0.2</strong></p>
-                            <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "1.0.2"
-    }
-}
-                            </code></pre>
-                        </div>
-					</section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
 
-                    <section>
-                        <h3>Range</h3>
-                        <ul>
-                            <li>>=1.0</li>
-                            <li>>=1.0,<2.0</li>
-                            <li>>=1.0,<1.1 | >=1.2</li>
-                        </ul>
-                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": ">=1.0,<1.1 | >=1.2"
-    }
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>Wildcard</h3>
-                        <ul>
-                            <li>1.0.*</li>
-                            <li>1.*</li>
-                        </ul>
-
-                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "1.0.*"
-    }
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>Tilde Operator</h3>
-                        <ul>
-                            <li>~1.2</li>
-                            <li>~1.2.1</li>
-                        </ul>
-
-                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "~1.2"
-    }
-}
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Branches</h3>
-                        <p><code>dev</code> prefix is used to specify a specific branch.</p>
-                        <ul>
-                            <li>dev-master</li>
-                            <li>dev-newFeature</li>
-                            <li>dev-feature/newFeatureName</li>
-                        </ul>
-
-                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "dev-master"
-    }
-}
-                        </code></pre>
-                    </section>
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
 				</section>
 
 				<section>
-					<h2>Aliases</h2>
-
-                    <p>Used to alias a branch to a specific version.</p>
-
-                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "require": {
-        "silex/silex": "dev-master as 1.2.9",
-        "guzzle/http": "dev-newFeature as 2.1.3"
-    }
-}
-                    </code></pre>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 				</section>
 
 				<section>
-					<h2>Lock file</h2>
-                    <h3>composer.lock</h3>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
 
-					<p>Contains the version specific information of your last install/update.</p>
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
 				</section>
 
 				<section>
-					<section>
-                        <h2>Custom Installers</h2>
-
-                        <p>Allows for a package maintainer to customize the installation of their package.</p>
-
-                        <aside class="notes">
-                            At times it may be necessary for a package to require additional actions during installation, such as installing packages outside of the default vendor library.
-
-                            In these cases you could consider creating a Custom Installer to handle your specific logic.
-                        </aside>
-					</section>
-
-                    <section>
-                        <h3>phpDocumentor example</h3>
-                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-{
-    "name": "phpdocumentor/template-responsive",
-    "type": "phpdocumentor-template",
-    "require": {
-        "phpdocumentor/template-installer-plugin": "*"
-    }
-}
-                        </code></pre>
-
-                        <aside class="notes">
-                            An example use-case would be:
-
-                            phpDocumentor features Templates that need to be installed outside of the default /vendor folder structure. As such they have chosen to adopt the phpdocumentor-template type and create a plugin providing the Custom Installer to send these templates to the correct folder.
-                        </aside>
-                    </section>
-				</section>
-
-                <section>
-                    <h2>Plugins</h2>
-
-                    <p>Gives the ability to alter or expand Composer's functionality.</p>
-
-                    <h3>Event Handling</h3>
-
-                    <ul>
-                        <li>COMMAND</li>
-                        <li>PRE_FILE_DOWNLOAD</li>
-                    </ul>
-
-                    <aside class="notes">
-                        You may wish to alter or expand Composer's functionality with your own. For example if your environment poses special requirements on the behaviour of Composer which do not apply to the majority of its users or if you wish to accomplish something with composer in a way that is not desired by most users.
-
-                        In these cases you could consider creating a plugin to handle your specific logic. e.g. setup an http proxy before downloading packages.
-                    </aside>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Scripts</h2>
-
-                        <p>Execute custom code or package-specific commands during the composer execution process.</p>
-
-                        <aside class="notes">
-                            <p>A script, in Composer's terms, can either be a PHP callback (defined as a static method) or any command-line executable command. Scripts are useful for executing a package's custom code or package-specific commands during the Composer execution process.</p>
-
-                            <p>Note: Only scripts defined in the root package's composer.json are executed. If a dependency of the root package specifies its own scripts, Composer does not execute those additional scripts.</p>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <ul style="font-size: 90%;">
-                            <li><strong>pre/post-install-cmd</strong>: occurs before the install command is executed.</li>
-                            <li><strong>pre/post-update-cmd</strong>: occurs before the update command is executed.</li>
-                            <li><strong>pre/post-status-cmd</strong>: occurs before the status command is executed.</li>
-                            <li><strong>pre/post-package-install</strong>: occurs before a package is installed.</li>
-                            <li><strong>pre/post-package-update</strong>: occurs before a package is updated.</li>
-                            <li><strong>pre/post-package-uninstall</strong>: occurs before a package has been uninstalled.</li>
-                            <li><strong>pre/post-autoload-dump</strong>: occurs before the autoloader is dumped, either during install/update, or via the dump-autoload command.</li>
-                            <li><strong>post-root-package-install</strong>: occurs after the root package has been installed, during the create-project command.</li>
-                            <li><strong>post-create-project-cmd</strong>: occurs after the create-project command is executed.</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
-                </section>
-
-				<section>
-					<section>
-                        <h2>Private Packages</h2>
-                        <h3>with Satis</h3>
-
-                        <p>Host your own composer repository.</p>
-
-                        <p><a href="https://github.com/composer/satis">https://github.com/composer/satis</a></p>
-					</section>
-
-                    <section>
-                        <img src="images/satis.png" />
-                    </section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
 				</section>
 
 				<section>
-					<h2>Vendor binaries</h2>
-
-                    <p>Any command line script that a Composer package would like to pass along to a user who installs the package should be listed as a vendor binary.</p>
-
-                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-# composer.json
-{
-    "bin": [
-        "bin/my-script",
-        "bin/my-other-script"
-    ]
-}
-                    </code></pre>
-
-                    <aside class="notes">
-                        doctrine/orm, phpunit/phpunit
-                    </aside>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+					</ul>
 				</section>
 
-				<section>
-					<h1>THANK YOU</h1>
-                    <h2>QUESTIONS?</h2>
-                    <p><img src="images/adp.gif" width="300" style="padding: 20px;" /></p>
-					<h3>BY John Kelly / john.m.kelly@adp.com</h3>
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="http://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
 				</section>
 
 			</div>
@@ -389,11 +377,11 @@
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
 
 		<script>
 
-			// Full list of configuration options available here:
+			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
@@ -401,21 +389,16 @@
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
+				// Optional reveal.js plugins
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
 
