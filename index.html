@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -160,6 +160,10 @@ require __DIR__ . '/vendor/autoload.php';
     }
 }
                             </code></pre>
+
+                            <aside class="notes">
+                                This will tell Composer to install this version and this version only. If other dependencies require a different version, the solver will ultimately fail and abort any install or update procedures.
+                            </aside>
                         </div>
                     </section>
 
@@ -169,15 +173,22 @@ require __DIR__ . '/vendor/autoload.php';
                             <li>>=1.0</li>
                             <li>>=1.0,<2.0</li>
                             <li>>=1.0,<1.1 | >=1.2</li>
+                            <li>1.0 - 2.0 (hyphen)</li>
                         </ul>
                         <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 # composer.json
 {
     "require": {
-        "silex/silex": ">=1.0,<1.1 | >=1.2"
+        "silex/silex": ">=1.0,<1.1 || >=1.2"
     }
 }
                         </code></pre>
+
+                        <aside class="notes">
+                            By using comparison operators you can specify ranges of valid versions. Valid operators are >, >=, <, <=, !=.
+
+                            You can define multiple ranges. Ranges separated by a space ( ) or comma (,) will be treated as a logical AND. A double pipe (||) will be treated as a logical OR. AND has higher precedence than OR.
+                        </aside>
                     </section>
 
                     <section>
@@ -213,6 +224,10 @@ require __DIR__ . '/vendor/autoload.php';
     }
 }
                         </code></pre>
+
+                        <aside class="notes">
+                            Next significant release.  Specifies a minimum version, but allows the last digit specified to go up.
+                        </aside>
                     </section>
 
                     <section>
@@ -232,6 +247,18 @@ require __DIR__ . '/vendor/autoload.php';
     }
 }
                         </code></pre>
+
+                        <aside class="notes">
+                            Next significant release.  For pre-1.0 versions it also acts with safety in mind and treats ^0.3 as >=0.3.0 <0.4.0.
+
+                            This is the recommended operator for maximum interoperability when writing library code.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Test version constraints</h3>
+
+                        <p>http://semver.mwl.be/</p>
                     </section>
                 </section>
 
@@ -269,11 +296,12 @@ require __DIR__ . '/vendor/autoload.php';
                 </section>
 
                 <section>
-                    <h2>Custom Installers</h2>
+                    <section>
+                        <h2>Custom Installers</h2>
 
-                    <p>Allows for a package maintainer to customize the installation of their package.</p>
+                        <p>Allows for a package maintainer to customize the installation of their package.</p>
 
-                    <h3>PhpDocumentor Example</h3>
+                        <h3>PhpDocumentor Example</h3>
                     <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 {
     "name": "phpdocumentor/template-responsive",
@@ -283,28 +311,103 @@ require __DIR__ . '/vendor/autoload.php';
     }
 }</code></pre>
 
-                    <aside class="notes">
-                        such as installing packages outside of the default vendor library.
+                        <aside class="notes">
+                            such as installing packages outside of the default vendor library.
 
-                        In these cases you could consider creating a Custom Installer to handle your specific logic.
-                    </aside>
-                </section>
+                            In these cases you could consider creating a Custom Installer to handle your specific logic.
 
-                <section>
-                    <h2>Plugins</h2>
+                            phpDocumentor features Templates that need to be installed outside of the default /vendor folder structure. As such they have chosen to adopt the phpdocumentor-template type and create a plugin providing the Custom Installer to send these templates to the correct folder.
+                        </aside>
+                    </section>
 
-                    <p>Gives the ability to alter or expand Composer's functionality.</p>
+                    <section>
+                        <h2>Custom Installers</h2>
 
-                    <h3>Event Handling</h3>
+                        <h3>PhpDocumentor Custom Installer Example</h3>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+{
+    "name": "phpdocumentor/template-installer-plugin",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {"phpDocumentor\\Composer": "src/"}
+    },
+    "extra": {
+        "class": "phpDocumentor\\Composer\\TemplateInstallerPlugin"
+    },
+    "require": {
+        "composer-plugin-api": "1.0.0"
+    }
+}</code></pre>
 
-                    <ul>
-                        <li>COMMAND</li>
-                        <li>PRE_FILE_DOWNLOAD</li>
-                    </ul>
+                        <aside class="notes">
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Custom Installers</h2>
 
-                    <aside class="notes">
-                        Such as an AWS plugin to authenticate and pull from an S3 bucket.
-                    </aside>
+                        <h3>PhpDocumentor Custom Installer Example</h3>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+namespace phpDocumentor\Composer;
+
+use Composer\Composer;
+use Composer\IO\IOInterface;
+use Composer\Plugin\PluginInterface;
+
+class TemplateInstallerPlugin implements PluginInterface
+{
+    public function activate(Composer $composer, IOInterface $io)
+    {
+        $installer = new TemplateInstaller($io, $composer);
+        $composer->getInstallationManager()->addInstaller($installer);
+    }
+}</code></pre>
+
+                        <aside class="notes">
+                            alter or expand Composer's functionality with your own
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Custom Installers</h2>
+
+                        <h3>PhpDocumentor Custom Installer Example</h3>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+namespace phpDocumentor\Composer;
+
+use Composer\Package\PackageInterface;
+use Composer\Installer\LibraryInstaller;
+
+class TemplateInstaller extends LibraryInstaller
+{
+    /**
+    * {@inheritDoc}
+    */
+    public function getPackageBasePath(PackageInterface $package)
+    {
+        $prefix = substr($package->getPrettyName(), 0, 23);
+        if ('phpdocumentor/template-' !== $prefix) {
+            throw new \InvalidArgumentException(
+                'Unable to install template, phpdocumentor templates '
+                . 'should always start their package name with '
+                . '"phpdocumentor/template-"'
+            );
+        }
+
+        return 'data/templates/'.substr($package->getPrettyName(), 23);
+    }
+
+    /**
+    * {@inheritDoc}
+    */
+    public function supports($packageType)
+    {
+        return 'phpdocumentor-template' === $packageType;
+    }
+}</code></pre>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
                 </section>
 
                 <section>
@@ -316,18 +419,6 @@ require __DIR__ . '/vendor/autoload.php';
                         <aside class="notes">
                             This is just the task-runner side of Composer.  Like Gradle, Maven, Grunt, Gulp.
                         </aside>
-                    </section>
-
-                    <section>
-                        <ul>
-                            <li><strong>pre/post-install-cmd</strong>: occurs before the install command is executed.</li>
-                            <li><strong>pre/post-update-cmd</strong>: occurs before the update command is executed.</li>
-                            <li><strong>pre/post-status-cmd</strong>: occurs before the status command is executed.</li>
-                            <li><strong>pre/post-package-install</strong>: occurs before a package is installed.</li>
-                            <li><strong>pre/post-package-update</strong>: occurs before a package is updated.</li>
-                            <li><strong>pre/post-package-uninstall</strong>: occurs before a package has been uninstalled.</li>
-                            <li>...</li>
-                        </ul>
                     </section>
                 </section>
 
@@ -422,7 +513,6 @@ $ composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 				progress: true,
 				history: true,
 				center: true,
-                mouseWheel: true,
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 

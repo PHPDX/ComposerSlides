@@ -848,8 +848,7 @@ body {
   transition-duration: 400ms; }
 
 .reveal[data-transition-speed="slow"] > .backgrounds .slide-background {
-  -webkit-transition-duration: 1200ms;
-          transition-duration: 1200ms; }
+  transition-duration: 1200ms; }
 
 /*********************************************
  * OVERVIEW
@@ -865,15 +864,13 @@ body {
     overflow: hidden;
     visibility: visible !important;
     cursor: pointer;
-    -moz-box-sizing: border-box;
-         box-sizing: border-box; }
+    box-sizing: border-box; }
   .reveal.overview .slides section:hover, .reveal.overview .slides section.present {
     outline: 10px solid rgba(150, 150, 150, 0.4);
     outline-offset: 10px; }
   .reveal.overview .slides section .fragment {
     opacity: 1;
-    -webkit-transition: none;
-            transition: none; }
+    transition: none; }
   .reveal.overview .slides section:after, .reveal.overview .slides section:before {
     display: none !important; }
   .reveal.overview .slides > section.stack {
@@ -892,16 +889,14 @@ body {
     outline-offset: 10px; }
 
 .reveal.overview .slides section, .reveal.overview-deactivating .slides section {
-  -webkit-transition: none;
-          transition: none; }
+  transition: none; }
 
 .reveal.overview .backgrounds .slide-background, .reveal.overview-deactivating .backgrounds .slide-background {
-  -webkit-transition: none;
-          transition: none; }
+  transition: none; }
 
 .reveal.overview-animated .slides {
-  -webkit-transition: -webkit-transform 0.4s ease;
-          transition: transform 0.4s ease; }
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease; }
 
 /*********************************************
  * RTL SUPPORT
