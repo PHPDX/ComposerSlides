@@ -56,9 +56,6 @@
                     </ul>
 
                     <p><img src="images/cdk_logo.png" width="161" style="padding: 15px;background-color: white;" /></p>
-                    <p class="fragment">
-                        There are positions.  Ask me afterwards for details.
-                    </p>
                 </section>
 
                 <section>
@@ -67,11 +64,10 @@
                     <ul>
                         <li>Dependency manager for PHP</li>
                         <li>Manages per-project dependencies</li>
-                        <li>Comes with built in autoloading</li>
+                        <li>Comes with built in autoloading and basic task-runner</li>
                     </ul>
                 </section>
 
-                <!-- Example of nested vertical slides -->
                 <section>
                     <section>
                         <h2>What's wrong with PEAR?</h2>
@@ -375,6 +371,35 @@ require __DIR__ . '/vendor/autoload.php';
                 </section>
 
                 <section>
+                    <section>
+                        <h2>DMS Considerations</h2>
+
+                        <h3>Multiple PHP versions</h3>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+# composer.json
+{
+    "config": {
+        "platform": {
+            "php": "5.3.3"
+        }
+    }
+}
+                        </code></pre>
+
+                        <p>Lets you fake platform packages (PHP and extensions) so that you can emulate a production env or define your target platform in the config</p>
+                    </section>
+
+                    <section>
+                        <h3>Build before deploy</h3>
+
+                        <code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+$ composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
                     <h1>THANK YOU</h1>
                     <h2>QUESTIONS?</h2>
                     <p><img src="images/cdk_logo.png" width="161" style="padding: 20px;background-color: white;" /></p>
@@ -397,6 +422,7 @@ require __DIR__ . '/vendor/autoload.php';
 				progress: true,
 				history: true,
 				center: true,
+                mouseWheel: true,
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
